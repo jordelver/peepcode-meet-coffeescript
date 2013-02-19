@@ -1,0 +1,3 @@
+jQuery ->
+  $('#entry').focus()
+
