@@ -1,3 +1,8 @@
-describe "A simple text", ->
-  it "performs addition", ->
-    (expect 1 + 1).toEqual 2
+describe "Dish", ->
+
+  beforeEach ->
+    @dish = new Dish 'Sirloin Steak $18.99 mains'
+
+  it "extract the title", ->
+    expect(@dish.title).toEqual 'Sirloin Steak'
+
