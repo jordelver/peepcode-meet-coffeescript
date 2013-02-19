@@ -6,3 +6,6 @@ describe "Dish", ->
   it "extract the title", ->
     expect(@dish.title).toEqual 'Sirloin Steak'
 
+  it "extract the price", ->
+    expect(@dish.price).toEqual '$18.99'
+
