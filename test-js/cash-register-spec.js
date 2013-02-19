@@ -13,4 +13,25 @@
     });
   });
 
+  describe("Money", function() {
+    describe("valid value", function() {
+      beforeEach(function() {
+        return this.money = new Money('$15.99');
+      });
+      it("parses to cents", function() {
+        return (expect(this.money.cents)).toEqual(1599);
+      });
+      return it("formats to string", function() {
+        return (expect(this.money.toString())).toEqual('$15.99');
+      });
+    });
+    return describe("invalid value", function() {
+      return it("sets cents to zero if a money value can't be parsed", function() {
+        var money;
+        money = new Money('NOT A MONETARY VALUE');
+        return expect(money.cents).toEqual(0);
+      });
+    });
+  });
+
 }).call(this);
