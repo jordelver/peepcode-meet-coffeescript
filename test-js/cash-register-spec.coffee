@@ -7,7 +7,7 @@ describe "Dish", ->
     expect(@dish.title).toEqual 'Sirloin Steak'
 
   it "extract the price", ->
-    expect(@dish.price).toEqual '$18.99'
+    expect(@dish.price.cents).toEqual 1899
 
 describe "Money", ->
 

@@ -1,6 +1,7 @@
 window.Dish = class Dish
   constructor: (rawDescription = "") ->
     [all, @title, @price] = @parseRawDescription rawDescription
+    @price = new Money @price
 
   parseRawDescription: (rawDescription) ->
     pattern = ///

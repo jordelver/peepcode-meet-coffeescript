@@ -9,7 +9,7 @@
       return expect(this.dish.title).toEqual('Sirloin Steak');
     });
     return it("extract the price", function() {
-      return expect(this.dish.price).toEqual('$18.99');
+      return expect(this.dish.price.cents).toEqual(1899);
     });
   });
 
