@@ -12,6 +12,8 @@ window.Dish = class Dish
     result = rawDescription.match pattern
     r.trim() for r in result
 
+  toJSON: -> { @title, @price.toString() }
+
 window.Money = class Money
   constructor: (rawString = '') ->
     @cents = @parseCents rawString
@@ -33,4 +35,8 @@ window.Meal = class Meal
     total = new Money
     total.cents = total.cents + dish.price.cents for dish in @dishes
     total
+
+  toJSON: ->
+    price: @totalPrice().toString()
+    dishes: dish.toJSON() for dish in @dishes
 

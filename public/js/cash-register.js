@@ -26,6 +26,13 @@
       return _results;
     };
 
+    Dish.prototype.toJSON = function() {
+      return {
+        title: this.title,
+        price: this.price.toString()
+      };
+    };
+
     return Dish;
 
   })();
@@ -74,6 +81,23 @@
         total.cents = total.cents + dish.price.cents;
       }
       return total;
+    };
+
+    Meal.prototype.toJSON = function() {
+      var dish;
+      return {
+        price: this.totalPrice().toString(),
+        dishes: (function() {
+          var _i, _len, _ref, _results;
+          _ref = this.dishes;
+          _results = [];
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            dish = _ref[_i];
+            _results.push(dish.toJSON());
+          }
+          return _results;
+        }).call(this)
+      };
     };
 
     return Meal;
