@@ -34,4 +34,28 @@
     });
   });
 
+  describe("Meal", function() {
+    beforeEach(function() {
+      this.donut = new Dish('Maple Bacon Donut $1.99');
+      return this.fish = new Dish('Salmon Filet $14.99');
+    });
+    return describe("blank object", function() {
+      beforeEach(function() {
+        return this.meal = new Meal;
+      });
+      it("adds a single dish", function() {
+        this.meal.add(this.donut);
+        return (expect(this.meal.dishes.length)).toEqual(1);
+      });
+      it("adds several dishes", function() {
+        this.meal.add(this.donut, this.fish);
+        return (expect(this.meal.dishes.length)).toEqual(2);
+      });
+      return it("calculates the total price", function() {
+        this.meal.add(this.donut, this.fish);
+        return (expect(this.meal.totalPrice().cents)).toEqual(1698);
+      });
+    });
+  });
+
 }).call(this);

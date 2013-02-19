@@ -28,3 +28,26 @@ describe "Money", ->
       money = new Money 'NOT A MONETARY VALUE'
       expect(money.cents).toEqual 0
 
+describe "Meal", ->
+
+  beforeEach ->
+    @donut = new Dish 'Maple Bacon Donut $1.99'
+    @fish  = new Dish 'Salmon Filet $14.99'
+
+  describe "blank object", ->
+
+    beforeEach ->
+      @meal = new Meal
+
+    it "adds a single dish", ->
+      @meal.add @donut
+      (expect @meal.dishes.length).toEqual 1
+
+    it "adds several dishes", ->
+      @meal.add @donut, @fish
+      (expect @meal.dishes.length).toEqual 2
+
+    it "calculates the total price", ->
+      @meal.add @donut, @fish
+      (expect @meal.totalPrice().cents).toEqual 1698
+
